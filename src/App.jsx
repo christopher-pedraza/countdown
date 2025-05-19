@@ -25,7 +25,7 @@ function App() {
         showLabels={true}
         hideOnComplete={false}
         labelStyle={{ color: "white", fontSize: "1.5rem" }}
-        className="sm:transform sm:scale-200"
+        className="md:transform md:scale-200"
       />
       {exploded && <Confetti width={width} height={height} />}
     </div>
