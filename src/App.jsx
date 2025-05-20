@@ -11,9 +11,20 @@ function App() {
   // Get date from URL query string, fallback to default
   const searchParams = new URLSearchParams(window.location.search);
   const dateParam = searchParams.get("date");
-  const targetDate = dateParam
-    ? new Date(dateParam)
-    : new Date("2025-06-06T11:00:00");
+
+  var targetDate = "";
+
+  if (dateParam) {
+    if (dateParam == "adios-compis-y-redes") {
+      targetDate = new Date("2025-06-06T10:50:00");
+    } else if (dateParam == "libertad") {
+      targetDate = new Date("2025-06-13T12:50:00");
+    } else {
+      targetDate = new Date(dateParam);
+    }
+  } else {
+    targetDate = new Date("2025-06-06T10:50:00");
+  }
 
   return (
     <div className="bg-black flex items-center justify-center h-screen w-screen">
