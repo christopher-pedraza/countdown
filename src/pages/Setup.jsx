@@ -15,7 +15,7 @@ export default function SetupPage() {
       date: date.toDate(getLocalTimeZone()).toISOString().slice(0, 19),
       title: "Custom Countdown",
     });
-    window.location.href = `/?${queryParams.toString()}`;
+    window.location.href = `/countdown/?${queryParams.toString()}`;
   };
 
   const handleDateFromNowCountdown = () => {
@@ -28,7 +28,7 @@ export default function SetupPage() {
       date: targetDate.toISOString(),
       title: "Custom Countdown",
     });
-    window.location.href = `/?${queryParams.toString()}`;
+    window.location.href = `/countdown/?${queryParams.toString()}`;
   };
 
   return (
