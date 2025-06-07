@@ -1,11 +1,12 @@
-import FlipClockPage from "./pages/flipclock";
+import FlipClockPage from "./pages/FlipClock";
+import SetupPage from "./pages/Setup";
 
 function App() {
-  return (
-    <>
-      <FlipClockPage />
-    </>
-  );
+  const searchParams = new URLSearchParams(window.location.search);
+  const dateParam = searchParams.get("date");
+  const titleParam = searchParams.get("title");
+
+  return <>{dateParam ? <FlipClockPage /> : <SetupPage />}</>;
 }
 
 export default App;
