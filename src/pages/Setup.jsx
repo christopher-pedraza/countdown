@@ -9,23 +9,41 @@ export default function SetupPage() {
   const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [seconds, setSeconds] = useState(0);
-
   const handleDateCountdown = () => {
+    // Convert to local time format that preserves the user's timezone
+    const jsDate = date.toDate(getLocalTimeZone());
+    const year = jsDate.getFullYear();
+    const month = String(jsDate.getMonth() + 1).padStart(2, "0");
+    const day = String(jsDate.getDate()).padStart(2, "0");
+    const hours = String(jsDate.getHours()).padStart(2, "0");
+    const minutes = String(jsDate.getMinutes()).padStart(2, "0");
+    const seconds = String(jsDate.getSeconds()).padStart(2, "0");
+    const localISOString = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
     const queryParams = new URLSearchParams({
-      date: date.toDate(getLocalTimeZone()).toISOString().slice(0, 19),
+      date: localISOString,
       title: "Custom Countdown",
     });
     window.location.href = `/countdown/?${queryParams.toString()}`;
   };
-
   const handleDateFromNowCountdown = () => {
     const targetDate = new Date();
     targetDate.setDate(targetDate.getDate() + days);
     targetDate.setHours(targetDate.getHours() + hours);
     targetDate.setMinutes(targetDate.getMinutes() + minutes);
     targetDate.setSeconds(targetDate.getSeconds() + seconds);
+
+    // Format in local time to avoid timezone issues
+    const year = targetDate.getFullYear();
+    const month = String(targetDate.getMonth() + 1).padStart(2, "0");
+    const day = String(targetDate.getDate()).padStart(2, "0");
+    const hoursStr = String(targetDate.getHours()).padStart(2, "0");
+    const minutesStr = String(targetDate.getMinutes()).padStart(2, "0");
+    const secondsStr = String(targetDate.getSeconds()).padStart(2, "0");
+    const localISOString = `${year}-${month}-${day}T${hoursStr}:${minutesStr}:${secondsStr}`;
+
     const queryParams = new URLSearchParams({
-      date: targetDate.toISOString(),
+      date: localISOString,
       title: "Custom Countdown",
     });
     window.location.href = `/countdown/?${queryParams.toString()}`;
