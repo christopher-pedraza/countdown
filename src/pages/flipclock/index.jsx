@@ -35,8 +35,23 @@ export default function FlipClockPage() {
         }}
         showLabels={true}
         hideOnComplete={false}
-        labelStyle={{ color: "white", fontSize: "1.5rem" }}
-        className="md:transform md:scale-200"
+        labelStyle={{
+          color: "lightgray",
+          fontSize: "2rem",
+          // fontWeight: "bold",
+          marginTop: "1.5rem",
+        }}
+        digitBlockStyle={{
+          fontSize: "4rem",
+          width: "5rem",
+          height: "7rem",
+          background: "#222",
+          color: "#fff",
+          borderRadius: "1rem",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.3)",
+        }}
+        separatorStyle={{ color: "#fff", size: "0.5rem" }}
+        spacing={{ clock: "0.5rem", digitBlock: "0.5rem" }}
       />
       {exploded && <Confetti width={width} height={height} />}
     </div>
